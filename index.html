@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Morgan — Executive Presentation Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-alt:#eef1f0;
+    --ink:#12203a;
+    --slate:#55606e;
+    --accent:#a9782f;
+    --line:#d8dce0;
+    --chart-blue:#3e6e91;
+    --chart-teal:#4e8c82;
+    --chart-amber:#c99a4a;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  a{color:inherit;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+  /* ---------- Nav ---------- */
+  header.site{
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(6px);
+    z-index:20;
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 32px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .brand span{color:var(--accent);}
+  nav.links{display:flex; gap:32px;}
+  nav.links a{
+    font-size:14px;
+    text-decoration:none;
+    color:var(--slate);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{
+    color:var(--ink);
+    border-color:var(--accent);
+  }
+  .nav-cta{
+    font-size:14px;
+    text-decoration:none;
+    background:var(--ink);
+    color:#fff;
+    padding:9px 18px;
+    border-radius:var(--radius);
+  }
+  .nav-cta:hover{background:var(--accent);}
+  .mobile-links{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 96px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    font-size:14px;
+    color:var(--slate);
+    margin:0 0 22px;
+    line-height:1.5;
+  }
+  .hero h1{
+    font-size:48px;
+    line-height:1.08;
+    margin:0 0 22px;
+  }
+  .hero p.lede{
+    font-size:17px;
+    line-height:1.6;
+    color:var(--slate);
+    max-width:46ch;
+    margin:0 0 34px;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
+  }
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{background:var(--accent); border-color:var(--accent);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- Mock slide (hero visual) ---------- */
+  .slide-frame{
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:0 24px 48px -24px rgba(18,32,58,0.28);
+    aspect-ratio:16/9;
+    display:flex;
+    flex-direction:column;
+    padding:26px 30px 20px;
+  }
+  .slide-frame .slide-kicker{
+    font-size:10px;
+    letter-spacing:.04em;
+    color:var(--accent);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .slide-frame .slide-title{
+    font-size:17px;
+    font-weight:700;
+    line-height:1.3;
+    margin-bottom:16px;
+    max-width:34ch;
+  }
+  .mece{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    flex:1;
+  }
+  .mece .col{
+    border-top:3px solid var(--chart-blue);
+    padding-top:10px;
+    font-size:10.5px;
+    color:var(--slate);
+    line-height:1.5;
+  }
+  .mece .col:nth-child(2){border-top-color:var(--chart-teal);}
+  .mece .col:nth-child(3){border-top-color:var(--chart-amber);}
+  .mece .col b{
+    display:block;
+    font-size:11.5px;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .slide-frame .slide-foot{
+    display:flex;
+    justify-content:space-between;
+    font-size:8.5px;
+    color:#9aa2ab;
+    border-top:1px solid var(--line);
+    padding-top:8px;
+    margin-top:14px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  section.alt{background:var(--paper-alt);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:32px;
+    margin-bottom:48px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:22px;
+  }
+  .section-head h2{font-size:30px; margin:0;}
+  .section-head p{
+    font-size:14.5px;
+    color:var(--slate);
+    max-width:34ch;
+    margin:0;
+    line-height:1.5;
+  }
+
+  /* ---------- Capabilities ---------- */
+  .capabilities{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .cap{
+    background:var(--paper);
+    padding:30px 28px;
+  }
+  section.alt .cap{background:var(--paper-alt);}
+  .cap h3{
+    font-size:17px;
+    margin:0 0 10px;
+  }
+  .cap p{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--slate);
+    margin:0;
+  }
+
+  /* ---------- Portfolio ---------- */
+  .portfolio-note{
+    font-size:13px;
+    color:var(--slate);
+    margin:-30px 0 40px;
+  }
+  .portfolio-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .work-card{
+    border:1px solid var(--line);
+    background:#fff;
+  }
+  .mini-slide{
+    aspect-ratio:16/9;
+    padding:20px 22px 14px;
+    display:flex;
+    flex-direction:column;
+    border-bottom:1px solid var(--line);
+  }
+  .mini-slide .k{font-size:9px; font-weight:600; color:var(--accent); letter-spacing:.03em; margin-bottom:4px;}
+  .mini-slide .t{font-size:14.5px; font-weight:700; line-height:1.3; margin-bottom:12px; max-width:30ch;}
+  .work-caption{padding:16px 22px 20px;}
+  .work-caption h3{font-size:15px; margin:0 0 4px; font-family:'Inter',sans-serif; font-weight:600;}
+  .work-caption p{font-size:13px; color:var(--slate); margin:0 0 12px; line-height:1.55;}
+  .work-download{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--accent);
+    border-bottom:1px solid var(--accent);
+    padding-bottom:1px;
+  }
+  .work-download:hover{color:var(--ink); border-color:var(--ink);}
+
+  /* timeline bars (waterfall mock) */
+  .bars{display:flex; align-items:flex-end; gap:8px; flex:1;}
+  .bars .bar{
+    flex:1;
+    background:var(--chart-blue);
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    font-size:8px;
+    color:#fff;
+    padding-top:3px;
+  }
+  .bars .bar.up{background:var(--chart-teal);}
+  .bars .bar.total{background:var(--ink);}
+
+  /* kpi tiles */
+  .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; flex:1;}
+  .kpi{border:1px solid var(--line); padding:8px 10px;}
+  .kpi .num{font-size:15px; font-weight:700; color:var(--ink); font-family:'Fraunces',serif;}
+  .kpi .lab{font-size:8px; color:var(--slate); text-transform:uppercase; letter-spacing:.03em;}
+
+  /* phase timeline */
+  .phases{display:flex; gap:6px; flex:1; align-items:stretch;}
+  .phase{flex:1; background:var(--paper-alt); border-top:3px solid var(--chart-amber); padding:8px 8px; font-size:8.5px; color:var(--slate); line-height:1.4;}
+  .phase b{display:block; font-size:9.5px; color:var(--ink); margin-bottom:3px;}
+
+  /* funnel */
+  .funnel{display:flex; flex-direction:column; gap:6px; flex:1; justify-content:center;}
+  .funnel .step{height:16px; background:var(--chart-blue); display:flex; align-items:center; padding-left:10px; font-size:8px; color:#fff;}
+  .funnel .step:nth-child(2){width:82%; background:var(--chart-teal);}
+  .funnel .step:nth-child(3){width:64%; background:var(--chart-amber);}
+  .funnel .step:nth-child(4){width:48%; background:var(--ink);}
+
+  /* ---------- Process ---------- */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:24px;
+  }
+  .step-item{
+    border-top:1px solid var(--ink);
+    padding-top:16px;
+  }
+  .step-item .n{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    color:var(--accent);
+    display:block;
+    margin-bottom:10px;
+  }
+  .step-item h3{font-size:14.5px; margin:0 0 8px; font-family:'Inter',sans-serif; font-weight:600;}
+  .step-item p{font-size:13px; color:var(--slate); line-height:1.55; margin:0;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .contact-grid h2{font-size:32px; margin:0 0 18px;}
+  .contact-grid p{font-size:15px; color:var(--slate); line-height:1.6; max-width:42ch;}
+  .contact-list{list-style:none; padding:0; margin:28px 0 0;}
+  .contact-list li{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+    font-size:14.5px;
+  }
+  .contact-list li span:first-child{color:var(--slate);}
+  .contact-list li a{text-decoration:none; font-weight:600;}
+  .contact-list li a:hover{color:var(--accent);}
+  .contact-form{border:1px solid var(--line); padding:30px;}
+  .contact-form label{
+    display:block;
+    font-size:12.5px;
+    color:var(--slate);
+    margin:0 0 6px;
+  }
+  .contact-form .field{margin-bottom:18px;}
+  .contact-form input, .contact-form textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:11px 12px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    background:#fff;
+    color:var(--ink);
+  }
+  .contact-form input:focus, .contact-form textarea:focus{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+  }
+  .contact-form textarea{min-height:100px; resize:vertical;}
+  .contact-form .btn{width:100%; text-align:center; border-radius:var(--radius);}
+
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:var(--slate);
+  }
+
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero{padding:56px 0 64px;}
+    .hero h1{font-size:36px;}
+    .capabilities{grid-template-columns:1fr;}
+    .portfolio-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr; gap:40px;}
+    .section-head{flex-direction:column; align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top">Alex Morgan <span>·</span> Presentations</a>
+    <nav class="links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow-line">PowerPoint development for consulting, strategy &amp; finance teams</p>
+        <h1>Presentations built to move a room.</h1>
+        <p class="lede">I develop, edit, and polish enterprise-grade PowerPoint decks — turning dense analysis into a storyline your executives, clients, and board can follow in one pass.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#work">See sample work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="slide-frame" role="img" aria-label="Sample consulting slide showing a three-pillar growth framework">
+        <div class="slide-kicker">MARKET ENTRY STRATEGY — DRAFT v4</div>
+        <div class="slide-title">Three moves unlock the adjacent market within 18 months</div>
+        <div class="mece">
+          <div class="col"><b>Route to market</b>Partner with two regional distributors before building direct sales.</div>
+          <div class="col"><b>Product fit</b>Localize pricing tiers; defer full feature parity to year two.</div>
+          <div class="col"><b>Operating model</b>Stand up a lean 6-person team reporting into regional GM.</div>
+        </div>
+        <div class="slide-foot"><span>Client &amp; Company — Confidential</span><span>12</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="alt" id="capabilities">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What I do</h2>
+        <p>End-to-end support, from a blank slide to a board-ready deck.</p>
+      </div>
+      <div class="capabilities">
+        <div class="cap">
+          <h3>Deck development</h3>
+          <p>Structuring a storyline from raw analysis, interview notes, or a rough outline into a logical, decision-ready flow.</p>
+        </div>
+        <div class="cap">
+          <h3>Editing &amp; polish</h3>
+          <p>Cleaning up inherited decks — consistent alignment, spacing, and a genuinely MECE argument on every page.</p>
+        </div>
+        <div class="cap">
+          <h3>Data visualization</h3>
+          <p>Charts, waterfalls, and frameworks built to read correctly in five seconds, not five minutes.</p>
+        </div>
+        <div class="cap">
+          <h3>Executive templates</h3>
+          <p>Reusable, on-brand master templates so your team can build first drafts without design support.</p>
+        </div>
+        <div class="cap">
+          <h3>Fast turnarounds</h3>
+          <p>Overnight edits ahead of steering committees, investment committees, and board meetings.</p>
+        </div>
+        <div class="cap">
+          <h3>Confidentiality</h3>
+          <p>Comfortable working under NDA with sensitive deal, diligence, and strategy material.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p>A sample of the slide types I build most often.</p>
+      </div>
+      <p class="portfolio-note">Company names and figures below are illustrative, built to demonstrate the slide types I produce most often — real client decks are confidential and shown to prospective clients on request. Each card links to a short downloadable sample.</p>
+
+      <div class="portfolio-grid">
+
+        <div class="work-card">
+          <div class="mini-slide">
+            <div class="k">COST TRANSFORMATION ROADMAP</div>
+            <div class="t">A phased path to a 15% cost base reduction</div>
+            <div class="phases">
+              <div class="phase"><b>Phase 1</b>Quick wins: procurement &amp; vendor consolidation</div>
+              <div class="phase"><b>Phase 2</b>Process redesign across shared services</div>
+              <div class="phase"><b>Phase 3</b>Organization &amp; span-of-control reset</div>
+            </div>
+          </div>
+          <div class="work-caption">
+            <h3>Cost transformation roadmap</h3>
+            <p>Phased implementation slide for a corporate strategy team, built to anchor a multi-quarter steering committee cadence.</p>
+            <a class="work-download" href="cost-transformation-roadmap.pptx" download>Download 5-slide sample (.pptx)</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="mini-slide">
+            <div class="k">M&amp;A SYNERGY CASE</div>
+            <div class="t">Cost synergies bridge EBITDA to the target range</div>
+            <div class="bars">
+              <div class="bar" style="height:40%;">Base</div>
+              <div class="bar up" style="height:22%;">+</div>
+              <div class="bar up" style="height:16%;">+</div>
+              <div class="bar total" style="height:76%;">Target</div>
+            </div>
+          </div>
+          <div class="work-caption">
+            <h3>M&amp;A synergy waterfall</h3>
+            <p>Bridge chart for an investment committee memo, isolating each synergy lever from base-case EBITDA.</p>
+            <a class="work-download" href="ma-synergy-case.pptx" download>Download 5-slide sample (.pptx)</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="mini-slide">
+            <div class="k">BOARD PERFORMANCE REVIEW</div>
+            <div class="t">Q3 performance held against plan on four core metrics</div>
+            <div class="kpis">
+              <div class="kpi"><div class="num">+8.4%</div><div class="lab">Revenue vs plan</div></div>
+              <div class="kpi"><div class="num">31.2%</div><div class="lab">Gross margin</div></div>
+              <div class="kpi"><div class="num">96%</div><div class="lab">Retention</div></div>
+              <div class="kpi"><div class="num">4.1x</div><div class="lab">Net leverage</div></div>
+              <div class="kpi"><div class="num">+12</div><div class="lab">Headcount</div></div>
+              <div class="kpi"><div class="num">18d</div><div class="lab">DSO</div></div>
+            </div>
+          </div>
+          <div class="work-caption">
+            <h3>Board KPI dashboard</h3>
+            <p>A single-glance metrics slide standardized across quarterly board packs for a finance client.</p>
+            <a class="work-download" href="board-performance-review.pptx" download>Download 5-slide sample (.pptx)</a>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="mini-slide">
+            <div class="k">GO-TO-MARKET PIPELINE</div>
+            <div class="t">Pipeline conversion narrows fastest after the demo stage</div>
+            <div class="funnel">
+              <div class="step">Leads</div>
+              <div class="step">Qualified</div>
+              <div class="step">Demo</div>
+              <div class="step">Closed</div>
+            </div>
+          </div>
+          <div class="work-caption">
+            <h3>Pipeline funnel</h3>
+            <p>Funnel visualization built for a commercial strategy review, highlighting the stage losing the most volume.</p>
+            <a class="work-download" href="commercial-pipeline-review.pptx" download>Download 5-slide sample (.pptx)</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="alt" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How a project runs</h2>
+        <p>The same five stages, whether it's a single slide fix or a full deck build.</p>
+      </div>
+      <div class="process">
+        <div class="step-item">
+          <span class="n">01</span>
+          <h3>Brief &amp; source review</h3>
+          <p>Share the audience, the ask, and whatever source material exists — analysis, notes, or an old deck.</p>
+        </div>
+        <div class="step-item">
+          <span class="n">02</span>
+          <h3>Storyline &amp; structure</h3>
+          <p>A slide-by-slide outline and argument flow, agreed before any design work starts.</p>
+        </div>
+        <div class="step-item">
+          <span class="n">03</span>
+          <h3>Slide build</h3>
+          <p>Full drafting in PowerPoint — layouts, charts, and iconography built natively, not pasted images.</p>
+        </div>
+        <div class="step-item">
+          <span class="n">04</span>
+          <h3>Polish &amp; QA</h3>
+          <p>Alignment, consistency, and a line-by-line check against the source numbers.</p>
+        </div>
+        <div class="step-item">
+          <span class="n">05</span>
+          <h3>Delivery</h3>
+          <p>Final .pptx, editable and on-brand, with source files if requested.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Let's put together your next deck.</h2>
+        <p>Tell me about the audience, the deadline, and what you already have. I'll follow up with a scope and a turnaround time, usually within one business day.</p>
+        <ul class="contact-list">
+          <li><span>Email</span><a href="mailto:hello@alexmorgandecks.com">hello@alexmorgandecks.com</a></li>
+          <li><span>Based in</span><span>Nairobi, Kenya — working with clients globally</span></li>
+          <li><span>Typical turnaround</span><span>2–5 business days, rush available</span></li>
+        </ul>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="details">What do you need?</label>
+          <textarea id="details" name="details" placeholder="Deck type, audience, deadline..."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-row">
+    <span>© 2026 Alex Morgan Presentations</span>
+    <span>Built for consulting, strategy &amp; finance teams</span>
+  </div>
+</footer>
+
+</body>
+</html>
