@@ -2,7 +2,7 @@
 
 My portfolio site showcasing PowerPoint development, editing, and design work for management consulting, corporate strategy, and corporate finance audiences.
 
-**Live site:** https://your-username.github.io/portfolio-site/
+**Live site:** [https://your-username.github.io/portfolio-site/](https://kelvinmburu.github.io/slides-portfolio/)
 
 ## What's in this repo
 
